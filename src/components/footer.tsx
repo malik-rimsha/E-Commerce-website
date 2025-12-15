@@ -32,7 +32,7 @@ export default function Footer() {
                                 href="https://facebook.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#007580] text-xl border-2 border-transparent rounded-full hover:border-[#007580]"
+                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaFacebookF />
                             </a>
@@ -40,7 +40,7 @@ export default function Footer() {
                                 href="https://x.com/UmerDua14152?t=urHtt3eimv191pKnh8Mvwg&s=08"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#007580] text-xl border-2 border-transparent rounded-full hover:border-[#007580]"
+                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaTwitter />
                             </a>
@@ -48,7 +48,7 @@ export default function Footer() {
                                 href="https://www.instagram.com/invites/contact/?igsh=10na7hiqtaaez&utm_content=x1jebuk"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#007580] text-xl border-2 border-transparent rounded-full hover:border-[#007580]"
+                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaInstagram />
                             </a>
@@ -56,7 +56,7 @@ export default function Footer() {
                                 href="https://pinterest.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#007580] text-xl border-2 border-transparent rounded-full hover:border-[#007580]"
+                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaPinterestP />
                             </a>
@@ -64,7 +64,7 @@ export default function Footer() {
                                 href="https://youtube.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#007580] text-xl border-2 border-transparent rounded-full hover:border-[#007580]"
+                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaYoutube />
                             </a>
@@ -86,7 +86,7 @@ export default function Footer() {
                                 <li key={item}>
                                     <a
                                         href="#"
-                                        className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                                        className="hover:text-[#272343] hover:underline hover:underline-offset-4"
                                     >
                                         {item}
                                     </a>
@@ -108,7 +108,7 @@ export default function Footer() {
                                 <li key={item}>
                                     <a
                                         href="#"
-                                        className="hover:text-[#007580] hover:underline hover:underline-offset-4"
+                                        className="hover:text-[#272343] hover:underline hover:underline-offset-4"
                                     >
                                         {item}
                                     </a>
@@ -126,7 +126,7 @@ export default function Footer() {
                                 placeholder="Your email"
                                 className="px-4 py-2 w-full border text-[#9A9CAA] border-gray-300 rounded-md sm:rounded-l-md sm:rounded-r-none focus:outline-none"
                             />
-                            <button className="bg-[#029FAE] text-white px-6 py-2 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-teal-700">
+                            <button className="bg-[#272343] text-white px-6 py-2 rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-gray-500">
                                 Subscribe
                             </button>
                         </div>

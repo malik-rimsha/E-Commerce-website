@@ -13,48 +13,48 @@ const AboutSection = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div className="bg-[#F9F9F9] p-6 text-center">
-                    <h3 className="text-[20px] font-normal text-[#007580] flex items-center justify-center pt-5">
-                        <FaTruck className="text-[#007580] mb-2" />
+                    <h3 className="text-[20px] font-normal text-[#272343] flex items-center justify-center pt-5">
+                        <FaTruck className="text-[#272343] mb-2" />
                        Organic Essence
 
                     </h3>
-                    <p className="text-[16px] font-normal text-[#007580]  mt-4">
+                    <p className="text-[16px] font-normal text-[#272343]  mt-4">
                        Every drop is made from handpicked mustard and taramira seeds — no chemicals, no preservatives, just natural goodness.
 
                     </p>
                 </div>
 
                 <div className="bg-[#F9F9F9] p-6 text-center">
-                    <h3 className="text-[20px] font-normal text-[#007580] flex items-center justify-center pt-5">
-                        <FaCheck className="text-[#007580] mr-2" />
+                    <h3 className="text-[20px] font-normal text-[#272343] flex items-center justify-center pt-5">
+                        <FaCheck className="text-[#272343] mr-2" />
                         Traditionally Crafted
 
                     </h3>
-                    <p className="text-[16px] font-normal text-[#007580] mt-4 text-left">
+                    <p className="text-[16px] font-normal text-[#272343] mt-4 text-left">
                         Inspired by age-old beauty secrets, our oils are carefully prepared to retain every nutrient and benefit.
 
                     </p>
                 </div>
 
                 <div className="bg-[#F9F9F9] p-6 text-center">
-                    <h3 className="text-[20px] font-normal text-[#007580] flex items-center justify-center pt-5">
-                        <IoFileTrayOutline className="text-[#007580] mr-3" />
+                    <h3 className="text-[20px] font-normal text-[#272343] flex items-center justify-center pt-5">
+                        <IoFileTrayOutline className="text-[#272343] mr-3" />
                         Naturally Affordable
 
                     </h3>
-                    <p className="text-[16px] font-normal text-[#007580] mt-4">
+                    <p className="text-[16px] font-normal text-[#272343] mt-4">
                         We believe organic beauty should be accessible — that’s why our products offer the best quality at fair prices.
 
                     </p>
                 </div>
 
                 <div className="bg-[#F9F9F9] p-6 text-center">
-                    <h3 className="text-[20px] font-normal text-[#007580] flex items-center justify-center pt-5">
-                        <BiSolidLeaf className="text-[#007580] mr-3" />
+                    <h3 className="text-[20px] font-normal text-[#272343] flex items-center justify-center pt-5">
+                        <BiSolidLeaf className="text-[#272343] mr-3" />
                         Sustainable Wrap
 
                     </h3>
-                    <p className="text-[16px] font-normal text-[#007580] mt-4">
+                    <p className="text-[16px] font-normal text-[#272343] mt-4">
                        We use recyclable materials to protect the planet while you protect your hair.
 
                     </p>

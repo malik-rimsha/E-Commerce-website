@@ -138,7 +138,7 @@ const Page = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="w-full sm:w-[237px] h-[55px] bg-[#029FAE] border border-[#B88E2F] rounded-[5px] text-white py-3"
+                                className="w-full sm:w-[237px] h-[55px] bg-[#272343] hover:bg-gray-500 border border-[#B88E2F] rounded-[5px] text-white py-3"
                             >
                                 Submit
                             </button>

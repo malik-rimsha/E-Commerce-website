@@ -8,7 +8,7 @@ const AboutHero = () => {
     return (
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center bg-white mt-16 md:mt-32 px-4">
             {/* Left Section */}
-            <div className="w-full md:w-[650px] h-auto md:h-[478px] bg-[#007580] p-6 flex flex-col justify-start items-start text-left text-white">
+            <div className="w-full md:w-[650px] h-auto md:h-[478px] bg-[#F0F2F3] p-6 flex flex-col justify-start items-start text-left text-[#272343]">
                 <h1 className="text-[24px] md:text-[32px] font-bold pl-4 md:pl-6 pt-8 md:pt-12">
                     About Us -  RD Organic Hair Oil
                 </h1>
@@ -20,7 +20,7 @@ Each bottle is made with cold-pressed ingredients and traditional techniques, bl
                 </p>
                 <div className="pl-4 md:pl-6">
               <Link href={'product'}>
-               <button className="bg-[#2e6a6d] hover:bg-[#235a5c] transition-colors duration-300 text-white px-6 md:px-8 py-3 md:py-4 text-[14px] md:text-[16px] font-medium rounded-lg shadow-md hover:shadow-lg">
+               <button className="bg-[#272343] hover:bg-gray-500 transition-colors duration-300 text-white px-6 md:px-8 py-3 md:py-4 text-[14px] md:text-[16px] font-medium rounded-lg shadow-md hover:shadow-lg">
               View Collection
         
                </button>

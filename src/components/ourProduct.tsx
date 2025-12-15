@@ -33,7 +33,7 @@ export default function OurProduct() {
       id: 3,
       title: "  Mustard Royal",
       price: 999,
-      image: "/p3.png",
+      image: "/p10.png",
     },
     {
       id: 4,
@@ -83,12 +83,12 @@ export default function OurProduct() {
           <div key={product.id} className="group relative rounded-lg bg-white">
             <div className="relative aspect-square overflow-hidden rounded-lg">
               {product.isNew && (
-                <Badge className="absolute left-3 top-3 bg-emerald-500 hover:bg-emerald-600">
+                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-emerald-600">
                   New
                 </Badge>
               )}
               {product.isSale && (
-                <Badge className="absolute left-3 top-3 bg-orange-500 hover:bg-orange-600">
+                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-orange-600">
                   Sales
                 </Badge>
               )}
@@ -116,7 +116,7 @@ export default function OurProduct() {
                   )}
                 </div>
               </div>
-              <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+              <button className="rounded-full bg-[#272343] p-2 text-white transition-colors hover:bg-gray-500">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Add to cart</span>
               </button>

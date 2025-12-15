@@ -21,7 +21,7 @@ interface AllProduct {
 export default function AllProduct() {
     const products: AllProduct[] = [
         {
-            id: 3,
+            id: 1,
             title: "RD Herbal Taramira",
             price: 999,
             image: "/3.png",
@@ -37,7 +37,7 @@ export default function AllProduct() {
         },
         {
             id: 3,
-            title: "Mustard Royal",
+            title: "Mustard Luxe",
             price: 999,
             image: "/p3.png",
         },
@@ -75,14 +75,14 @@ export default function AllProduct() {
             image: "/p8.png", // Updated image path to be unique
         },
         {
-            id: 4,
+            id: 9,
             title: "RD Herbal Mustard",
             price: 999,
             image: "/4.png", // Updated image path to be unique
             isNew: true,
         },
         {
-            id: 5,
+            id: 10,
             title: "Taramira Revive",
             price: 999,
             originalPrice: 1099,
@@ -90,7 +90,7 @@ export default function AllProduct() {
             isSale: true,
         },
         {
-            id: 9,
+            id: 11,
             title: "Taramira Royal",
             price: 999,
             image: "/p9.png", // Updated image path to be unique
@@ -114,12 +114,12 @@ export default function AllProduct() {
                     <div key={product.id} className="group relative rounded-lg bg-white">
                         <div className="relative aspect-square overflow-hidden rounded-lg">
                             {product.isNew && (
-                                <Badge className="absolute left-3 top-3 bg-emerald-500 hover:bg-emerald-600">
+                                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-emerald-600">
                                     New
                                 </Badge>
                             )}
                             {product.isSale && (
-                                <Badge className="absolute left-3 top-3 bg-orange-500 hover:bg-orange-600">
+                                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-orange-600">
                                     Sale
                                 </Badge>
                             )}
@@ -147,7 +147,7 @@ export default function AllProduct() {
                                     )}
                                 </div>
                             </div>
-                            <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+                            <button className="rounded-full bg-[#272343] p-2 text-white transition-colors hover:bg-gray-500">
                                 <ShoppingCart className="h-5 w-5" />
                                 <span className="sr-only">Add to cart</span>
                             </button>

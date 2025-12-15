@@ -14,7 +14,7 @@ const Hero = () => {
           </h1>
           <Link
             href="/product"
-            className="flex items-center hover:shadow-lg bg-[#029FAE] w-fit mx-auto md:mx-0 gap-5 rounded-lg py-2 lg:py-[14px] px-4 lg:px-6 mt-3 lg:mt-10 text-white text-[16px]"
+            className="flex items-center hover:shadow-lg bg-[#272343] w-fit mx-auto md:mx-0 gap-5 rounded-lg py-2 lg:py-[14px] px-4 lg:px-6 mt-3 lg:mt-10 text-white text-[16px]"
           >
             Shop Now
             <span>
