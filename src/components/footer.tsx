@@ -1,11 +1,11 @@
+"use client"
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"; 
 import {
     FaFacebookF,
-    FaTwitter,
     FaInstagram,
-    FaPinterestP,
-    FaYoutube,
+    FaTiktok, // TikTok icon import kiya
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -27,7 +27,10 @@ export default function Footer() {
                             Nurturing your hair with nature&apos;s finest. RD Organic Hair Oil – Where
                             Purity meets Perfection.
                         </p>
+                        
+                        {/* Social Icons Section - Updated */}
                         <div className="flex gap-4 mt-4">
+                            {/* Facebook */}
                             <a
                                 href="https://facebook.com"
                                 target="_blank"
@@ -36,42 +39,30 @@ export default function Footer() {
                             >
                                 <FaFacebookF />
                             </a>
+
+                            {/* Instagram */}
                             <a
-                                href="https://x.com/UmerDua14152?t=urHtt3eimv191pKnh8Mvwg&s=08"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
-                            >
-                                <FaTwitter />
-                            </a>
-                            <a
-                                href="https://www.instagram.com/invites/contact/?igsh=10na7hiqtaaez&utm_content=x1jebuk"
+                                href="https://www.instagram.com/rdorganichairoil?igsh=MXRlYm12ZHRxM2cyaA=="
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
                                 <FaInstagram />
                             </a>
+
+                            {/* TikTok */}
                             <a
-                                href="https://pinterest.com"
+                                href="https://tiktok.com/@rd.organic.hair.oil"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
                             >
-                                <FaPinterestP />
-                            </a>
-                            <a
-                                href="https://youtube.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-[#272343] text-xl border-2 border-transparent rounded-full hover:border-[#272343]"
-                            >
-                                <FaYoutube />
+                                <FaTiktok />
                             </a>
                         </div>
                     </div>
 
-                    {/* Category Section */}
+                    {/* Category Section (No changes) */}
                     <div className="w-full sm:w-1/2 md:w-1/5">
                         <h4 className="text-lg font-semibold text-[#9A9CAA]">Category</h4>
                         <ul className="mt-4 text-[#272343] space-y-2">
@@ -95,25 +86,30 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Support Section */}
+                    {/* Support Section (Working Links) */}
                     <div className="w-full sm:w-1/2 md:w-1/5">
                         <h4 className="text-lg font-semibold text-[#9A9CAA]">Support</h4>
-                        <ul className="mt-4 text-[#272343] space-y-2">
-                            {[
-                                "Help & Support",
-                                "Terms & Conditions",
-                                "Privacy Policy",
-                                "Help",
-                            ].map((item) => (
-                                <li key={item}>
-                                    <a
-                                        href="#"
-                                        className="hover:text-[#272343] hover:underline hover:underline-offset-4"
-                                    >
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
+                        <ul className="mt-4 text-[#272343] space-y-2 font-medium">
+                            <li>
+                                <Link href="/support" className="hover:text-[#272343] hover:underline hover:underline-offset-4 cursor-pointer">
+                                    Help & Support
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/terms" className="hover:text-[#272343] hover:underline hover:underline-offset-4 cursor-pointer">
+                                    Terms & Conditions
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/privacy-policy" className="hover:text-[#272343] hover:underline hover:underline-offset-4 cursor-pointer">
+                                    Privacy Policy
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/shipping" className="hover:text-[#272343] hover:underline hover:underline-offset-4 cursor-pointer">
+                                    Shipping & Returns
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -137,9 +133,9 @@ export default function Footer() {
                 </div>
 
                 {/* Footer Bottom */}
-                <div className="flex flex-wrap justify-between items-center text-[#9A9CAA] border-t pt-8">
+                <div className="flex flex-wrap justify-between items-center text-[#9A9CAA] border-t pt-8 mt-8">
                     <p className="w-full text-center sm:w-auto">
-                        © 2025 - R D Organic Hair Oil - Designed & Developed by{" "}
+                        © 2026 - R D Organic Hair Oil - Designed & Developed by{" "}
                         <a href="#" className="text-[#272343] hover:underline">
                             RD Team
                         </a>
@@ -149,4 +145,3 @@ export default function Footer() {
         </footer>
     );
 }
-

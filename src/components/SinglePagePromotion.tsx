@@ -1,40 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
-const products = [
-  {
-    id: "13",
-    img: "/p7.png",
-    name: "Taramira Strong 100ml",
-    discPrice: "999",
-  },
-  {
-    id: "14",
-    img: "/p8.png",
-    name: "Taramira Mild 100ml",
-    discPrice: "999",
-  },
-  {
-    id: "15",
-    img: "/p2.png",
-    name: "Twin Drop Of Gold 100ml",
-    discPrice: "999",
-  },
-  {
-    id: "16",
-    img: "/p3.png",
-    name: "Mustard Royal 100ml",
-    discPrice: "999",
-  },
-  {
-    id: "17",
-    img: "/p4.png",
-    name: "Mustard Classic 100ml",
-    discPrice: "999",
-  },
-];
+export default async function SinglePagePromotion() {
+  // Sanity Query: Pehle 5 products fetch karna
+  // Agar aapne Sanity mein 'isFeatured' ka field banaya hai to query mein filter laga sakti hain
+  const products = await client.fetch(`*[_type == "products"][0...5]{
+    _id,
+    title,
+    price,
+    "slug": slug.current,
+    "imageUrl": image.asset->url
+  }`);
 
-const SinglePagePromotion = () => {
   return (
     <div className="lg:mx-20 sm:mx-10 mx-3 lg:mt-10 mt-5 mb-10 lg:mb-24">
       <div className="head flex md:flex-row flex-col gap-3 justify-between items-center">
@@ -42,34 +20,35 @@ const SinglePagePromotion = () => {
           Featured Products
         </h3>
         <Link
-          href="/products"
+          href="/product"
           className="text-black font-bold lg:text-[18px] text-sm lg:border-b-2 border-b lg:pb-1 border-black"
         >
           View All
         </Link>
       </div>
+
       <div className="images mt-12 gap-7 overflow-x-scroll scrollbar-hide flex">
-        {products.map((prod) => (
-          <Link href={`/products/${prod.id}`} key={prod.id}>
+        {products.map((prod: any) => (
+          /* Link ko /products/[slug] par set kiya hai */
+          <Link href={`/products/${prod.slug}`} key={prod._id} className="flex-shrink-0">
             <div className="w-[220px] h-[220px] hover:drop-shadow-md relative">
               <Image
-                src={prod.img}
-                alt={prod.name}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
+                src={prod.imageUrl}
+                alt={prod.title}
+                fill
+                className="rounded-lg object-cover"
                 priority
               />
             </div>
-            <div className="flex justify-between mt-3">
-              <span className="text-[#272343]">{prod.name}</span>
-              <span className="text-black font-bold">{prod.discPrice}</span>
+            <div className="flex flex-col gap-1 mt-3 w-[220px]">
+              <div className="flex justify-between">
+                <span className="text-[#272343] font-medium truncate">{prod.title}</span>
+                <span className="text-black font-bold">PKR {prod.price}</span>
+              </div>
             </div>
           </Link>
         ))}
       </div>
     </div>
   );
-};
-
-export default SinglePagePromotion;
+}

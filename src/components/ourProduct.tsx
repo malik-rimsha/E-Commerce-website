@@ -1,125 +1,84 @@
-import { ShoppingCart } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { Zap, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { useCart } from "@/context/CartContext";
+
 interface Product {
-  id: number;
+  _id: string;
   title: string;
   price: number;
-  originalPrice?: number;
-  image: string;
-  isNew?: boolean;
-  isSale?: boolean;
+  imageUrl: string;
+  slug: string;
 }
 
 export default function OurProduct() {
-  const products: Product[] = [
-    {
-      id: 1,
-      title: "Taramira Mild",
-      price: 999,
-      image: "/p8.png",
-      isNew: true,
-    },
-    {
-      id: 2,
-      title: "  Twin Drop Of Gold",
-      price: 1999,
-      originalPrice: 2100,
-      image: "/p2.png",
-      isSale: true,
-    },
-    {
-      id: 3,
-      title: "  Mustard Royal",
-      price: 999,
-      image: "/p10.png",
-    },
-    {
-      id: 4,
-      title: "Mustard Classic",
-      price: 999,
-      image: "/p4.png",
-    },
-    {
-      id: 5,
-      title: "Taramira Royal",
-      price: 999,
-      image: "/p9.png",
-      isNew: true,
-    },
-    {
-      id: 6,
-      title: "Mustard Bloom",
-      price: 999,
-      originalPrice: 1099,
-      image: "/p6.png",
-      isSale: true,
-    },
-    {
-      id: 8,
-      title: "Twin Essence",
-      price: 1999,
-      image: "/p5.png",
-    },
-    {
-      id: 7,
-      title: "Taramira Strong",
-      price: 999,
-      image: "/p7.png",
-    },
-   
-  ];
+  const [products, setProducts] = useState<Product[]>([]);
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await client.fetch(`*[_type == "products"]{
+        _id,
+        title,
+        price,
+        "imageUrl": image.asset->url,
+        "slug": slug.current
+      }`);
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="max-w-screen-lg mx-auto px-4 py-20">
-      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight  mb-8">
-        {" "}
-        Our Products
-      </h1>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="max-w-screen-xl mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {products.map((product) => (
-          <div key={product.id} className="group relative rounded-lg bg-white">
-            <div className="relative aspect-square overflow-hidden rounded-lg">
-              {product.isNew && (
-                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-emerald-600">
-                  New
-                </Badge>
-              )}
-              {product.isSale && (
-                <Badge className="absolute left-3 top-3 bg-[#272343] hover:bg-orange-600">
-                  Sales
-                </Badge>
-              )}
-              <Link href={"components/productDectription/discription"}>
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  height={400}
-                  width={400}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </Link>
+          <div key={product._id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+            
+            {/* Image Section */}
+            <div className="relative aspect-[4/5] bg-[#F3F4F6]">
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                fill
+                className="object-cover"
+              />
             </div>
-            <div className="mt-4 flex items-center justify-between">
-              <div>
-                <h3 className="text-sm text-[#1C1B1F]">{product.title}</h3>
-                <div className="mt-1 flex items-center gap-2">
-                  <span className="text-lg font-medium text-[#1C1B1F]">
-                    PKR {product.price}
-                  </span>
-                  {product.originalPrice && (
-                    <span className="text-sm text-gray-500 line-through">
-                      PKR {product.originalPrice}
-                    </span>
-                  )}
-                </div>
+
+            {/* Content Section */}
+            <div className="p-5 flex flex-col flex-grow">
+              <h3 className="text-gray-800 font-bold text-lg mb-2">{product.title}</h3>
+              <p className="text-[#272343] font-black text-xl mb-6">PKR {product.price}</p>
+
+              {/* Buttons Section */}
+              <div className="mt-auto space-y-3">
+                {/* Add to Cart Button (Light) */}
+                <button 
+                  onClick={() => addToCart(product)}
+                  className="w-full bg-[#F0F2F3] text-[#272343] py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  ADD TO CART
+                </button>
+                <Link href={`/checkout?id=${product._id}`} className="block">
+                 
+                 
+                 <button 
+                  onClick={() => {
+                 addToCart(product); // Pehle cart mein add karein
+                  window.location.href = '/checkout'; // Phir checkout par bhej dein
+                   }}
+                    className="w-full bg-[#272343] text-white py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#1a182d] transition-colors"
+>
+                      <Zap className="w-4 h-4 fill-white" />
+                      BUY NOW
+                       </button>
+                </Link>
               </div>
-              <button className="rounded-full bg-[#272343] p-2 text-white transition-colors hover:bg-gray-500">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Add to cart</span>
-              </button>
             </div>
           </div>
         ))}
