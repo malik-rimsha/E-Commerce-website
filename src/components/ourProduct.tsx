@@ -35,6 +35,9 @@ export default function OurProduct() {
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-12">
+    <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight mb-8">
+        Our Products
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {products.map((product) => (
           <div key={product._id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
