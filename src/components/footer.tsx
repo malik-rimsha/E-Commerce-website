@@ -17,7 +17,7 @@ export default function Footer() {
                     <div className="flex flex-col items-start w-full sm:w-1/2 md:w-1/5">
                         <div className="flex items-center gap-2">
                             <Image
-                                src="/RDlogo.png"
+                                src="/Rdlogo.png"
                                 alt="logo"
                                 width={80}
                                 height={40}
