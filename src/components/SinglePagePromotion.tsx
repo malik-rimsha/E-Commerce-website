@@ -3,8 +3,6 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 
 export default async function SinglePagePromotion() {
-  // Sanity Query: Pehle 5 products fetch karna
-  // Agar aapne Sanity mein 'isFeatured' ka field banaya hai to query mein filter laga sakti hain
   const products = await client.fetch(`*[_type == "products"][0...5]{
     _id,
     title,
@@ -29,7 +27,7 @@ export default async function SinglePagePromotion() {
 
       <div className="images mt-12 gap-7 overflow-x-scroll scrollbar-hide flex">
         {products.map((prod: any) => (
-          /* Link ko /products/[slug] par set kiya hai */
+         
           <Link href={`/products/${prod.slug}`} key={prod._id} className="flex-shrink-0">
             <div className="w-[220px] h-[220px] hover:drop-shadow-md relative">
               <Image

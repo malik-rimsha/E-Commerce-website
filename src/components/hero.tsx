@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="w-full ">
           <Image
             src="/main.png"
-            alt="Chair"
+            alt="main"
             width={500}
             height={784}
             className="rounded-lg"
