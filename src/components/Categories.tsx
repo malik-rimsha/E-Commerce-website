@@ -31,9 +31,7 @@ export default function Categories() {
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
-            // Static UI ke liye 'Link' ko 'div' se badal diya gaya
-            // aur 'href' aur 'key' ka use 'Link' ki tarah ab zaroori nahi,
-            // lekin 'key' ko map function mein hamesha use karna chahiye.
+      
             <div
               key={category.name} // Key ko 'div' mein rakha gaya for list rendering best practice
               className="group relative overflow-hidden rounded-lg cursor-default" // cursor-default add kiya gaya taaki yeh clickable na lage
