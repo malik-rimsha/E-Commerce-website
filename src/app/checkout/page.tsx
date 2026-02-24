@@ -28,7 +28,6 @@ export default function Checkout() {
         const address = formData.get("address") as string;
         const transactionId = formData.get("transId") as string;
 
-        // Validations
         if (phone.length !== 11) {
             alert("11-digit ka sahi phone number likhein.");
             return;
@@ -56,25 +55,24 @@ export default function Checkout() {
             totalPrice: total,
             paymentMethod: paymentMethod,
             transactionId: transactionId,
-            status: "Awaiting Slip", // Status updated for verification
+            status: "Awaiting Slip", 
         };
 
         try {
             await axios.post(`/api/order`, payload);
             
-            // WhatsApp Message Logic
             const message = `*NEW ORDER: RD ORGANIC*%0A%0A` +
                             `*Name:* ${name}%0A` +
-                            `*Total:* Rs. ${total}%0A` +
+                            `*Total Bill:* Rs. ${total}%0A` +
                             `*TID:* ${transactionId}%0A%0A` +
-                            `⚠️ *Please send your Transaction Slip (Digital Receipt) now.*`;
+                            `⚠️ *Please send your Transaction Slip (Digital Receipt) here for verification.*`;
             
             const whatsappUrl = `https://wa.me/923268683373?text=${message}`;
 
             alert("Order Saved! Ab please WhatsApp par apni Transaction Slip share karein.");
             
             localStorage.removeItem("cart");
-            window.location.href = whatsappUrl; // Redirect to WhatsApp
+            window.location.href = whatsappUrl;
         } catch (err) {
             console.error("Order error:", err);
             alert("Order confirm nahi ho saka. Try again.");
@@ -88,6 +86,7 @@ export default function Checkout() {
             <h1 className="text-2xl md:text-3xl font-black mb-6 text-[#272343] uppercase tracking-tighter italic text-center md:text-left">Checkout</h1>
             
             <form onSubmit={handleOrder} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {/* Left Side: Forms */}
                 <div className="space-y-6">
                     <div className="space-y-4">
                         <h2 className="font-bold text-gray-400 text-xs uppercase tracking-[0.2em]">Shipping Details</h2>
@@ -129,32 +128,43 @@ export default function Checkout() {
                     </div>
                 </div>
 
+                {/* Right Side: Order Summary (Updated with Delivery Charges first) */}
                 <div className="bg-gray-50 p-6 border border-gray-200 rounded-2xl h-fit md:sticky md:top-24">
                     <h2 className="font-black mb-6 text-[#272343] border-b pb-4 text-xl uppercase italic">Order Summary</h2>
+                    
                     <div className="space-y-4 mb-8">
                         {cartItems.map((item: any, idx: number) => (
                             <div key={idx} className="flex justify-between items-center text-sm">
-                                <span className="text-black font-bold">{item.title || item.name} <span className="text-gray-400 text-xs ml-1">x{item.quantity || 1}</span></span>
+                                <span className="text-black font-bold truncate max-w-[150px]">{item.title || item.name} <span className="text-gray-400 text-xs ml-1">x{item.quantity || 1}</span></span>
                                 <span className="font-bold">Rs. {item.price * (item.quantity || 1)}</span>
                             </div>
                         ))}
                     </div>
                     
                     <div className="border-t-2 border-dashed pt-4 mb-8 space-y-2">
+                        {/* 1. Delivery Charges pehle */}
+                        <div className="flex justify-between text-gray-500 text-sm font-medium">
+                            <span>Delivery Charges:</span>
+                            <span className="font-bold text-[#272343]">Rs. {deliveryCharges}</span>
+                        </div>
+
+                        {/* 2. Subtotal uske baad */}
                         <div className="flex justify-between text-gray-500 text-sm">
                             <span>Subtotal:</span>
                             <span>Rs. {subtotal}</span>
                         </div>
+
+                        {/* 3. Total Bill akhir mein */}
                         <div className="flex justify-between text-[#272343] text-xl font-black pt-4 border-t border-gray-200 mt-2">
                             <span>Total Bill:</span>
-                            <span>Rs. {total}</span>
+                            <span className="underline decoration-gray-400">Rs. {total}</span>
                         </div>
                     </div>
 
                     <button type="submit" disabled={loading} className="w-full bg-[#272343] text-white font-black p-5 rounded-xl shadow-2xl transition-all uppercase tracking-widest disabled:bg-gray-300">
                         {loading ? "Confirming..." : "Confirm & Share Slip"}
                     </button>
-                    <p className="text-[8px] text-center mt-3 text-gray-400">RD ORGANIC HAIR CARE</p>
+                    <p className="text-[8px] text-center mt-3 text-gray-400 font-bold tracking-widest">RD ORGANIC HAIR CARE</p>
                 </div>
             </form>
         </div>

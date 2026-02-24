@@ -1,3 +1,4 @@
+
 "use client"; 
 
 import React, { useEffect, useState } from "react";
@@ -18,15 +19,16 @@ interface Product {
   slug: string;
   isNew?: boolean;
   isSale?: boolean;
+  badge?: string; // Naya field add kiya
 }
 
 export default function AllProduct() {
   const [products, setProducts] = useState<Product[]>([]);
-  const { addToCart } = useCart(); //
+  const { addToCart } = useCart();
 
-  
   useEffect(() => {
     const fetchProducts = async () => {
+      // Query mein 'badge' ka field add kiya hai
       const data = await client.fetch(`*[_type == "products"]{
         _id,
         title,
@@ -35,7 +37,8 @@ export default function AllProduct() {
         "imageUrl": image.asset->url,
         "slug": slug.current,
         isNew,
-        isSale
+        isSale,
+        badge 
       }`);
       setProducts(data);
     };
@@ -54,8 +57,18 @@ export default function AllProduct() {
             
             {/* Image Section */}
             <div className="relative aspect-square overflow-hidden rounded-lg bg-[#F5F5F5]">
-              {product.isNew && <Badge className="absolute left-2 top-2 bg-[#272343] z-10 text-[10px] px-2">NEW</Badge>}
-              {product.isSale && <Badge className="absolute left-2 top-2 bg-red-500 z-10 text-[10px] px-2">SALE</Badge>}
+              
+              {/* Badge Logic - Priority for Custom Badge Text */}
+              {product.badge ? (
+                <Badge className="absolute left-2 top-2 bg-[#a75d24] z-10 text-[10px] px-2 font-bold uppercase">
+                  {product.badge}
+                </Badge>
+              ) : (
+                <>
+                  {product.isNew && <Badge className="absolute left-2 top-2 bg-[#272343] z-10 text-[10px] px-2">NEW</Badge>}
+                  {product.isSale && <Badge className="absolute left-2 top-2 bg-red-500 z-10 text-[10px] px-2">SALE</Badge>}
+                </>
+              )}
               
               <Link href={`/products/${product.slug}`} className="block h-full w-full">
                 <Image
@@ -74,38 +87,32 @@ export default function AllProduct() {
               
               <div className="mt-2 flex items-center gap-2">
                 <span className="text-lg font-extrabold text-[#272343]">PKR {product.price}</span>
-                {product.originalPrice && (
+                
+                 {product.originalPrice && (
                   <span className="text-xs text-gray-400 line-through">PKR {product.originalPrice}</span>
                 )}
               </div>
 
-              {/* Action Buttons Section */}
+              {/* Action Buttons */}
               <div className="mt-5 flex flex-col gap-2">
-                
-                {/* Add to Cart - Functionality Added */}
                 <button 
-                  onClick={() => addToCart(product)} // Click par function chalega
+                  onClick={() => addToCart(product)} 
                   className="w-full flex items-center justify-center gap-2 bg-[#F0F2F3] text-[#272343] py-2.5 rounded-lg text-xs font-bold hover:bg-[#e2e5e7] transition-all active:scale-95 border border-gray-200"
                 >
                   <Plus className="h-4 w-4" />
                   ADD TO CART
                 </button>
 
-                {/* Buy Now */}
-                <Link href={`/checkout?id=${product._id}`} className="w-full">
-                
-                    <button 
-  onClick={() => {
-    addToCart(product); 
-    window.location.href = '/checkout'; 
-  }}
-  className="w-full bg-[#272343] text-white py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#1a182d] transition-colors"
->
-  <Zap className="w-4 h-4 fill-white" />
-  BUY NOW
-</button>
-                </Link>
-
+                <button 
+                  onClick={() => {
+                    addToCart(product); 
+                    window.location.href = '/checkout'; 
+                  }}
+                  className="w-full bg-[#272343] text-white py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#1a182d] transition-colors"
+                >
+                  <Zap className="w-4 h-4 fill-white" />
+                  BUY NOW
+                </button>
               </div>
             </div>
           </div>

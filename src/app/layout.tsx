@@ -5,7 +5,6 @@ import Topbar from "@/components/topbar";
 import Searchbar from "@/components/searchbar";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-// Step 1: CartProvider ko import karein
 import { CartProvider } from "@/context/CartContext";
 
 const geistSans = localFont({
