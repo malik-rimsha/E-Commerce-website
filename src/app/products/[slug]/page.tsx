@@ -2,7 +2,7 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/AddToCartButton"
 
 export default async function ProductDescriptionPage({ params }: { params: Promise<{ slug: string }> }) {
   
@@ -14,6 +14,7 @@ export default async function ProductDescriptionPage({ params }: { params: Promi
     description,
     "imageUrl": image.asset->url,
     originalPrice
+  
   }`, { slug });
 
   if (!product) {
