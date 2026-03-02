@@ -11,7 +11,6 @@ export default async function ProductDescriptionPage({ params }: { params: Promi
     _id,
     title,
     price,
-    priccewithdiscount,
     description,
     "imageUrl": image.asset->url,
     originalPrice
