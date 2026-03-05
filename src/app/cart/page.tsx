@@ -10,7 +10,7 @@ const CartPage = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
 
   const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const delivery = cart.length > 0 ? 200 : 0;
+  const delivery = cart.length > 0 ? 250 : 0;
   const total = subtotal + delivery;
 
   return (
