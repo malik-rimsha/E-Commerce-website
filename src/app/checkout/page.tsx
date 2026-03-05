@@ -7,7 +7,7 @@ export default function Checkout() {
     const [subtotal, setSubtotal] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const [paymentMethod, setPaymentMethod] = useState<string>("SadaPay");
-    const deliveryCharges = 200;
+    const deliveryCharges = 250;
 
     useEffect(() => {
         const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
